@@ -1,13 +1,19 @@
 package com.essContext.user;
 
 import com.essContext.BaseTest;
+import com.essContext.domain.service.LegalPersonService;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import static com.essContext.BaseRequestBody.body;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 public class LegalPersonTest extends BaseTest {
+
+    @Autowired
+    LegalPersonService legalPersonService;
+
     @Test
     void should_return_success_given_legalPersonInfo_when_register() {
         given().contentType("application/json")

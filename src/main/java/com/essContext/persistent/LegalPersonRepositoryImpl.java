@@ -18,4 +18,11 @@ public class LegalPersonRepositoryImpl implements LegalPersonRepository{
         legalPersonList.add(legalPerson);
         return legalPerson;
     }
+
+    @Override
+    public LegalPerson update(LegalPerson legalPerson) {
+        legalPerson.setId(UUID.randomUUID().toString());
+        legalPersonList.add(legalPerson);
+        return legalPerson;
+    }
 }

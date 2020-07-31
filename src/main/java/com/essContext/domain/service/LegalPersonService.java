@@ -12,6 +12,11 @@ public class LegalPersonService {
     LegalPersonRepository legalPersonRepository;
 
     public LegalPerson register(LegalPersonRequest request) throws Exception {
+        LegalPerson legalPerson = transfer(request);
+        return legalPersonRepository.save(legalPerson);
+    }
+
+    public LegalPerson transfer(LegalPersonRequest request) throws Exception {
         LegalPerson legalPerson = LegalPerson.builder()
                 .type(request.getType())
                 .companyName(request.getCompanyName())
@@ -22,4 +27,18 @@ public class LegalPersonService {
                 .build();
         return legalPersonRepository.save(legalPerson);
     }
+
+    public LegalPerson update(LegalPersonRequest request) throws Exception {
+        LegalPerson legalPerson = LegalPerson.builder()
+                .type(request.getType())
+                .companyName(request.getCompanyName())
+                .companyCode(request.getCompanyCode())
+                .name(request.getName())
+                .idType(request.getIdType())
+                .idCode(request.getIdCode())
+                .build();
+        return legalPersonRepository.update(legalPerson);
+    }
+
+
 }
